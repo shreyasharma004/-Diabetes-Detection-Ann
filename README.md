@@ -22,7 +22,7 @@ This project uses a simple Artificial Neural Network (ANN) to detect diabetes ba
 ## 🚀 How to Run
 
 ```bash
-git clone https://github.com/yourusername/diabetes-ann.git
+git clone https://github.com/shreyasharma004/diabetes-ann.git
 cd diabetes-ann
 python3 -m venv venv
 source venv/bin/activate   # or venv\Scripts\activate on Windows
