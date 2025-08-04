@@ -3,11 +3,11 @@ from tensorflow.keras.models import load_model
 import numpy as np
 from flask_cors import CORS
 
-app = Flask(__name__)
-CORS(app)  # Enables CORS for all domains on all routes
-
 # Load your model
 model = load_model('diabetes_ann_model.h5')
+
+app = Flask(__name__)
+CORS(app)  # Enables CORS for all domains on all routes
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -32,3 +32,4 @@ def predict():
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+
