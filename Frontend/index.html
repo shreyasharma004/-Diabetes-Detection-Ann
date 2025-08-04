@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Risk Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>DiabetesCheck</h1>
+                </div>
+                <p class="tagline">AI-Powered Diabetes Risk Assessment</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="assessment-container">
+                <div class="form-section">
+                    <div class="form-header">
+                        <h2>Health Information</h2>
+                        <p>Please provide accurate information for the best risk assessment</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <form id="diabetesForm" class="diabetes-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="pregnancies">
+                                    <i class="fas fa-baby"></i>
+                                    Number of Pregnancies
+                                </label>
+                                <input type="number" id="pregnancies" name="pregnancies" min="0" max="20" value="0" required>
+                                <span class="help-text">Total number of pregnancies</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="glucose">
+                                    <i class="fas fa-tint"></i>
+                                    Glucose Level (mg/dL)
+                                </label>
+                                <input type="number" id="glucose" name="glucose" min="0" max="300" value="120" required>
+                                <span class="help-text">Plasma glucose concentration</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bloodPressure">
+                                    <i class="fas fa-heart"></i>
+                                    Blood Pressure (mmHg)
+                                </label>
+                                <input type="number" id="bloodPressure" name="bloodPressure" min="0" max="200" value="80" required>
+                                <span class="help-text">Diastolic blood pressure</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="skinThickness">
+                                    <i class="fas fa-ruler"></i>
+                                    Skin Thickness (mm)
+                                </label>
+                                <input type="number" id="skinThickness" name="skinThickness" min="0" max="100" value="20" required>
+                                <span class="help-text">Triceps skin fold thickness</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin">
+                                    <i class="fas fa-syringe"></i>
+                                    Insulin Level (μU/mL)
+                                </label>
+                                <input type="number" id="insulin" name="insulin" min="0" max="900" value="80" required>
+                                <span class="help-text">2-Hour serum insulin</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bmi">
+                                    <i class="fas fa-weight"></i>
+                                    BMI (kg/m²)
+                                </label>
+                                <input type="number" id="bmi" name="bmi" min="0" max="70" step="0.1" value="25.0" required>
+                                <span class="help-text">Body mass index</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="diabetesPedigree">
+                                    <i class="fas fa-dna"></i>
+                                    Diabetes Pedigree Function
+                                </label>
+                                <input type="number" id="diabetesPedigree" name="diabetesPedigree" min="0" max="3" step="0.001" value="0.5" required>
+                                <span class="help-text">Diabetes pedigree function score</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Age (years)
+                                </label>
+                                <input type="number" id="age" name="age" min="1" max="120" value="30" required>
+                                <span class="help-text">Age in years</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Calculate Risk</span>
+                            <i class="fas fa-calculator"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="results-section" id="resultsSection">
+                    <div class="results-header">
+                        <h3>Risk Assessment Results</h3>
+                    </div>
+
+                    <div class="risk-meter" id="riskMeter">
+                        <div class="meter-container">
+                            <div class="meter-arc">
+                                <div class="meter-fill" id="meterFill"></div>
+                            </div>
+                            <div class="meter-center">
+                                <span class="risk-percentage" id="riskPercentage">0%</span>
+                                <span class="risk-label" id="riskLabel">Risk Level</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="risk-details" id="riskDetails">
+                        <div class="risk-card">
+                            <div class="risk-icon" id="riskIcon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="risk-info">
+                                <h4 id="riskTitle">Low Risk</h4>
+                                <p id="riskDescription">Based on your inputs, you have a low risk of diabetes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations" id="recommendations">
+                        <h4>Recommendations</h4>
+                        <ul id="recommendationsList">
+                            <li>Maintain a healthy diet rich in vegetables and whole grains</li>
+                            <li>Exercise regularly - aim for 150 minutes per week</li>
+                            <li>Monitor your weight and BMI</li>
+                            <li>Get regular health checkups</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>About Diabetes</h3>
+                        <p>Diabetes is a chronic condition that affects how your body processes blood sugar. Early detection and lifestyle changes can help prevent or manage the condition effectively.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Risk Factors</h3>
+                        <p>Key factors include family history, age, weight, physical activity, and previous glucose levels. This tool uses advanced algorithms to assess your risk.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Consult a Doctor</h3>
+                        <p>This assessment is for informational purposes only. Always consult with healthcare professionals for proper diagnosis and treatment.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 DiabetesCheck. This tool is for educational purposes only.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
