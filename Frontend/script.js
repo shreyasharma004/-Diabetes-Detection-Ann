@@ -1,6 +1,6 @@
 // Place this function OUTSIDE the class, near the top of your script.js
 async function getModelPrediction(data) {
-    const response = await fetch('http://localhost:5000/predict', {
+    const response = await fetch('https://diabetes-detection-ann.onrender.com/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -371,3 +371,4 @@ window.addEventListener('resize', () => {
         meter.style.transform = 'scale(1)';
     }
 });
+
